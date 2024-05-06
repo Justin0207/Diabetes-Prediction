@@ -226,7 +226,14 @@ if st.button('Diabetes Test Result : '):
        smoking_history_former, smoking_history_never,
        smoking_history_not_current, gender_Male, gender_Other]
     
-    diab_prediction = diabetes_model.predict(pd.DataFrame(labels).T)
+    diab_prediction = diabetes_model.predict(pd.DataFrame([age, hypertension, heart_disease, bmi, HbA1c_level,
+       blood_glucose_level, age_group_young, age_group_middle_aged,
+       age_group_senior, glucose_category_normal, glucose_category_high,
+       glucose_category_risky, bmi_category_healthy,
+       bmi_category_over_weight, bmi_category_obese,
+       smoking_history_current, smoking_history_ever,
+       smoking_history_former, smoking_history_never,
+       smoking_history_not_current, gender_Male, gender_Other]).T)
     
     
     if diab_prediction == 1:
