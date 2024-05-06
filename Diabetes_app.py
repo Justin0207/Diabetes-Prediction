@@ -53,7 +53,7 @@ st.title('Diabetes Prediction App')
 
 
 
-age = st.number_input('Age : ', step = 1, value = 0, placeholder = "Input your age")
+age = st.number_input('Age : ', step = 1, value = None, placeholder = "Input your age")
 
 if age:
     
@@ -99,7 +99,7 @@ if heart_disease == 'Yes':
 else:
     heart_disease = 0
     
-bmi = st.number_input('Body Mass Index : ', step = 0.1, value = 0.0, placeholder = "Input your Body Mass Index")
+bmi = st.number_input('Body Mass Index : ', step = 0.1, value = None, placeholder = "Input your Body Mass Index")
 
 if bmi:
 
@@ -127,9 +127,9 @@ if bmi:
         
         bmi_category_obese = 0
     
-HbA1c_level = st.number_input('HbA1c Level : ', step = 0.1,value = 0.0, placeholder = "Input your current Glycated Haemoglobin level or HbA1c level")
+HbA1c_level = st.number_input('HbA1c Level : ', step = 0.1,value = None, placeholder = "Input your current Glycated Haemoglobin level or HbA1c level")
 
-blood_glucose_level = st.number_input('Blood Glucose Level : ', step = 1, value = 10, placeholder = "Input your Blood Glucose Level")
+blood_glucose_level = st.number_input('Blood Glucose Level : ', step = 1, value = None, placeholder = "Input your Blood Glucose Level")
 
 if blood_glucose_level:
     
@@ -217,25 +217,44 @@ diab_diagnosis = ''
 
 if st.button('Diabetes Test Result : '):
     
-    labels = [age, hypertension, heart_disease, bmi, HbA1c_level,
-       blood_glucose_level, age_group_young, age_group_middle_aged,
-       age_group_senior, glucose_category_normal, glucose_category_high,
-       glucose_category_risky, bmi_category_healthy,
-       bmi_category_over_weight, bmi_category_obese,
-       smoking_history_current, smoking_history_ever,
-       smoking_history_former, smoking_history_never,
-       smoking_history_not_current, gender_Male, gender_Other]
+    try:
     
-    diab_prediction = diabetes_model.predict(pd.DataFrame(labels).T)
+        labels = [age, hypertension, heart_disease, bmi, HbA1c_level,
+                  
+           blood_glucose_level, age_group_young, age_group_middle_aged,
+           
+           age_group_senior, glucose_category_normal, glucose_category_high,
+           
+           glucose_category_risky, bmi_category_healthy,
+           
+           bmi_category_over_weight, bmi_category_obese,
+           
+           smoking_history_current, smoking_history_ever,
+           
+           smoking_history_former, smoking_history_never,
+           
+           smoking_history_not_current, gender_Male, gender_Other]
+        
+        diab_prediction = diabetes_model.predict(pd.DataFrame(labels).T)
     
+    except NameError:
+        
+        st.error('Missing or Null Inputs')
+        
+        st.stop()
     
     if diab_prediction == 1:
+        
+        diagnosis = 'This patient has a high risk of diabetes. Please visit a doctor today'
     
-        st.write('**Diagnosis : :red[This patient has a high risk of diabetes. Please visit a doctor today]**')
+        st.error('**Diagnosis : :red[{}]**'.format(diagnosis), icon='🚨')
+        
         
     else:
+        diagnosis = 'This patient has a low risk of diabetes'
         
-        st.write('**Diagnosis : :green[This patient has a low risk of diabetes]**')
+        st.success('**Diagnosis: :green[{}]**'.format(diagnosis), icon='✅')
+        
         
     
     
