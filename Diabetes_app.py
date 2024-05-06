@@ -7,7 +7,6 @@ Created on Mon May  6 09:27:17 2024
 
 import pickle
 import streamlit as st
-from streamlit_option_menu import option_menu
 import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
