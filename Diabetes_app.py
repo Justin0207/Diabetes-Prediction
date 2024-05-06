@@ -53,7 +53,7 @@ st.title('Diabetes Prediction App')
 
 
 
-age = st.number_input('Age : ', step = 1, value = None, placeholder = "Input your age")
+age = st.number_input('Age : ', step = 1, value = 0, placeholder = "Input your age")
 
 if age:
     
@@ -99,7 +99,7 @@ if heart_disease == 'Yes':
 else:
     heart_disease = 0
     
-bmi = st.number_input('Body Mass Index : ', step = 0.1, value = None, placeholder = "Input your Body Mass Index")
+bmi = st.number_input('Body Mass Index : ', step = 0.1, value = 0.0, placeholder = "Input your Body Mass Index")
 
 if bmi:
 
@@ -127,9 +127,9 @@ if bmi:
         
         bmi_category_obese = 0
     
-HbA1c_level = st.number_input('HbA1c Level : ', step = 0.1,value = None, placeholder = "Input your current Glycated Haemoglobin level or HbA1c level")
+HbA1c_level = st.number_input('HbA1c Level : ', step = 0.1,value = 0.0, placeholder = "Input your current Glycated Haemoglobin level or HbA1c level")
 
-blood_glucose_level = st.number_input('Blood Glucose Level : ', step = 1, value = None, placeholder = "Input your Blood Glucose Level")
+blood_glucose_level = st.number_input('Blood Glucose Level : ', step = 1, value = 10, placeholder = "Input your Blood Glucose Level")
 
 if blood_glucose_level:
     
