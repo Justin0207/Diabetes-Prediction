@@ -32,7 +32,7 @@ def set_background(main_bg):
              background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
              background-size: cover;
          }}
-         .st-emotion-cache-tlm35f ezrtsby2{{
+         .st-emotion-cache-tlm35f{{
              background: None}}
          </style>
          """,
