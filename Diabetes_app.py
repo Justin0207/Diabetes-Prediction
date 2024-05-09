@@ -39,7 +39,7 @@ def set_background(main_bg):
          unsafe_allow_html=True
      )
 
-set_background('health.jpg') 
+#set_background('health.jpg') 
 
 
 # Loading the saved models
